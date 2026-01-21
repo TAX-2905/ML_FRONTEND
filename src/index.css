@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  /* --- LIGHT MODE VARIABLES (Default) --- */
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --input-bg: #fafafa;
+  --input-border: #e5e7eb;
+  
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --analysis-bg: #f8fafc;
+}
+
+/* --- DARK MODE OVERRIDES (Applied via JS) --- */
+body.dark-mode {
+  --bg-color: #111827;      /* Very dark grey */
+  --card-bg: #1f2937;       /* Dark grey card */
+  --text-main: #f9fafb;     /* White text */
+  --text-muted: #9ca3af;    /* Light grey text */
+  --border-color: #374151;  /* Dark border */
+  --input-bg: #374151;      /* Dark input */
+  --input-border: #4b5563;
+  
+  --primary: #6366f1;       /* Brighter Indigo */
+  --primary-hover: #818cf8;
+  --success: #34d399;       
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --danger: #f87171;        
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --analysis-bg: #1f2937;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+* {
+  box-sizing: border-box;
+}

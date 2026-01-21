@@ -1,0 +1,305 @@
+/* src/App.css */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* subtle gradient that adapts to theme */
+  background: radial-gradient(circle at top, var(--bg-color), var(--bg-color)); 
+}
+
+.card {
+  width: 100%;
+  max-width: 580px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* HEADER TITLE ALIGNMENT FIX */
+.title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;      /* Vertically centers the group */
+  justify-content: center;  /* Horizontally centers the group */
+  gap: 12px;
+}
+
+/* This is the secret sauce: Forces the Icon span and Text span to align perfectly */
+.title span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* --- Input Area --- */
+.textarea {
+  width: 100%;
+  height: 140px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--input-border);
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* --- Buttons --- */
+.buttonRow {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.analyze-btn {
+  flex: 2;
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  flex: 1;
+  background-color: var(--card-bg); /* Adaptive bg */
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+.clear-btn:hover:not(:disabled) {
+  border-color: var(--text-muted);
+  color: var(--text-main);
+}
+
+/* --- Result Card --- */
+.result-card {
+  margin-top: 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;      /* Centers vertically */
+  justify-content: center;  /* <--- Centers horizontally (Fixes your issue) */
+  gap: 12px;
+  font-weight: 700;
+  font-size: 18px;
+  min-height: 60px;         /* Ensures the box has enough height */
+}
+
+/* This ensures the Icon sits perfectly inline with the Text */
+.result-header span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.status-toxic {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+}
+
+.status-safe {
+  background-color: var(--success-bg);
+  color: var(--success);
+}
+
+/* --- AI Analysis Section --- */
+.ai-section {
+  border-top: 1px solid var(--border-color);
+  background: var(--analysis-bg);
+}
+
+.toggle-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.toggle-btn:hover {
+  color: var(--primary);
+}
+
+.analysis-content {
+  padding: 0 20px 20px 20px;
+  color: var(--text-main); /* Adaptive text color */
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  animation: fadeIn 0.3s ease;
+}
+
+.analysis-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ... keep all existing styles ... */
+
+/* BLINK ANIMATION */
+@keyframes pulse-red {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Apply this class to make things blink */
+.blink-effect {
+  animation: pulse-red 1.5s infinite ease-in-out;
+}
+
+/* ... keep all existing code ... */
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  z-index: 100; /* Ensure it stays on top */
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ... existing styles ... */
+
+/* REPORT BUTTON FOOTER */
+.report-footer {
+  padding: 12px;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.report-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.report-btn:hover {
+  background-color: var(--bg-color);
+  color: var(--danger); /* Turns red on hover to signal 'reporting' */
+}
+
+.report-success {
+  font-size: 13px;
+  color: var(--success);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: fadeIn 0.3s ease;
+}
